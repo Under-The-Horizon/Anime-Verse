@@ -1,5 +1,4 @@
 import HeartIcon from "./Heart"
-import './Card.css'
 import StarIcon from "./Star";
 import React, { useState } from 'react';
 export default function Spotlight({ name, logo }) {
@@ -18,10 +17,10 @@ export default function Spotlight({ name, logo }) {
 
     return (
         <>
-            <div className="glove-effect h-68 w-80 px-4 hover:scale-110 duration-200">
-                <img src={logo} className="rounded-lg h-48 w-80" />
-                <div className="flex justify-between pt-2">
-                    <p className="truncate w-56">{name}</p>
+            <div className="h-72 w-60 pt-4 px-6 hover:scale-110 duration-200">
+                <img src={logo} className="rounded-lg h-60 w-56" />
+                <div className="flex justify-between">
+                    <p className="truncate w-32">{name}</p>
                     <div>
                         <button className="pr-2" onClick={handleStarClick}>
                             <StarIcon filled={isStarred} />

@@ -1,3 +1,6 @@
 .Home{
-    background-color: rgb(76, 76, 76);
+    background-image: url('./Image/Background6.png');
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
 }
