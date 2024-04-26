@@ -1,8 +1,12 @@
 import './Main.css'
+import Navbar from '../components/Navbar'
 
 export default function Main() {
     return (
-        <div className='flex pt-24 h-screen overflow-hidden' >
+        <div className='overflow-hidden'>
+        <Navbar/>
+        <div className='flex h-screen' >
+            
             <div className="w-full flex justify-center h-screen">
                 <div className="bg-violet-950 w-4/5 h-3/4 rounded-lg Background2">
                     <p className="text-3xl text-white p-16 pb-4 pt-20 font-bold">ANIMEVERSE</p>
@@ -20,5 +24,7 @@ export default function Main() {
                 </div>
             </div>
         </div>
+        </div>
+        
     )
 }

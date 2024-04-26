@@ -1,10 +1,10 @@
 import "./Home.css";
 import React, { useState, useEffect } from 'react';
-import Card from "../components/Card";
 import Spotlight from '../components/Spotlight.jsx'
 import Navbar from "../components/Navbar.jsx";
 import Trending from '../components/Trending.jsx'
 import Genres from '../components/Genres.jsx'
+import Loader from '../components/Loader.jsx'; 
 
 export default function Home() {
     const [data, setData] = useState(null);
@@ -32,7 +32,7 @@ export default function Home() {
 
 
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <Loader/>;
     }
 
     if (error) {
@@ -124,5 +124,4 @@ export default function Home() {
             </div>
         </>
     )
-
 }

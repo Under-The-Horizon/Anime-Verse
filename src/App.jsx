@@ -17,7 +17,7 @@ import {
 
 function App() {
   return (
-    <div className='App h-screen'>
+    <div className='App h-screen overflow-hidden'>
       <BrowserRouter>
         <Routes>
           <Route index element={<Main/>} />
