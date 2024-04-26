@@ -4,6 +4,7 @@ import Card from "../components/Card";
 import Spotlight from '../components/Spotlight.jsx'
 import Navbar from "../components/Navbar.jsx";
 import Trending from '../components/Trending.jsx'
+import Genres from '../components/Genres.jsx'
 
 export default function Home() {
     const [data, setData] = useState(null);
@@ -79,30 +80,30 @@ export default function Home() {
                             ))}
                         </div>
                     </div>
-                    {/* <div className="h-14 text-2xl font-medium p-4 text-white">Top 10 Animes</div>
+                    <div className="h-14 text-2xl font-medium p-4 text-white">Top 10 Today</div>
                     <div className="h-96 w-screen">
                         <div className="h-80 flex flex-wrap overflow-x-scroll scrollbar-hide flex-col text-white align-middle">
-                            {data.top10Animes.map(anime => (
-                                <Trending name={anime.name} logo={anime.poster} />
-                            ))}
-                        </div>
-                    </div> */}
-                    {/* <div className="h-14 text-2xl font-medium p-4 text-white">Weekly Animes</div>
-                    <div className="h-96 w-screen">
-                        <div className="h-80 flex flex-wrap overflow-x-scroll scrollbar-hide flex-col text-white align-middle">
-                            {data.week.map(anime => (
+                            {data.top10Animes.today.map(anime => (
                                 <Trending name={anime.name} logo={anime.poster} />
                             ))}
                         </div>
                     </div>
-                    <div className="h-14 text-2xl font-medium p-4 text-white">Monthly Hits</div> */}
-                    {/* <div className="h-96 w-screen">
+                    <div className="h-14 text-2xl font-medium p-4 text-white">Top 10 Weekly</div>
+                    <div className="h-96 w-screen">
                         <div className="h-80 flex flex-wrap overflow-x-scroll scrollbar-hide flex-col text-white align-middle">
-                            {data.month.map(anime => (
+                            {data.top10Animes.week.map(anime => (
                                 <Trending name={anime.name} logo={anime.poster} />
                             ))}
                         </div>
-                    </div> */}
+                    </div>
+                    <div className="h-14 text-2xl font-medium p-4 text-white">Top 10 Monthly</div>
+                    <div className="h-96 w-screen">
+                        <div className="h-80 flex flex-wrap overflow-x-scroll scrollbar-hide flex-col text-white align-middle">
+                            {data.top10Animes.month.map(anime => (
+                                <Trending name={anime.name} logo={anime.poster} />
+                            ))}
+                        </div>
+                    </div>
                     <div className="h-14 text-2xl font-medium p-4 text-white">Upcoming Animes</div>
                     <div className="h-96 w-screen">
                         <div className="h-80 flex flex-wrap overflow-x-scroll scrollbar-hide flex-col text-white align-middle">
@@ -111,7 +112,14 @@ export default function Home() {
                             ))}
                         </div>
                     </div>
-                    
+                    <div>
+                        <div className="h-14 text-2xl font-medium p-4 text-white">Genres</div>
+                        <div className="text-white">
+                            {data.genres.map(anime => (
+                                <Genres name={anime} />
+                            ))}
+                        </div>
+                    </div>
                 </div>
             </div>
         </>
