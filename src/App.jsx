@@ -1,10 +1,10 @@
-import { useState } from 'react'
 import Test from './pages/Test.jsx';
-import './App.css'
+import './App.css';
 import * as React from "react";
 import { createRoot } from "react-dom/client";
 import Main from './pages/Main';
 import Home from './pages/Home';
+import Movies from './pages/Movies.jsx';
 import Navbar from './components/Navbar';
 import {
   createBrowserRouter,
@@ -22,6 +22,7 @@ function App() {
         <Routes>
           <Route index element={<Main/>} />
           <Route path='/' element={<Main/>} />
+          <Route path='/movies' element={<Movies/>} />
           <Route path='/home' element={<Home/>} />
           <Route path='/test' element={<Test/>}/>
         </Routes>
