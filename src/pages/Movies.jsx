@@ -1,15 +1,13 @@
 import "./Home.css";
 import React, { useState, useEffect } from 'react';
-import Spotlight from '../components/Spotlight.jsx'
 import Navbar from "../components/Navbar.jsx";
-import Trending from '../components/Trending.jsx'
-import Genres from '../components/Genres.jsx'
 import Loader from '../components/Loader.jsx';
 import Movie from "../components/Movie.jsx";
 import Top10 from "../components/Top10.jsx";
+import Genres from "../components/Genres.jsx";
 
 export default function Home() {
-    const [content, setContent] = useState('');
+    const [content, setContent] = useState("");
 
     const handleButtonClick = (buttonContent) => {
         setContent(buttonContent);
@@ -17,12 +15,11 @@ export default function Home() {
     const [data, setData] = useState(null);
     const [isLoading, setIsLoading] = useState(true);
     const [error, setError] = useState(null);
-    const [card, setCard] = useState(null);
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await fetch('https://api-aniwatch.onrender.com/anime/movie?page=1');
+                const response = await fetch(`https://api-aniwatch.onrender.com/anime/movie?page=1`);
                 if (!response.ok) {
                     throw new Error('Failed to fetch data');
                 }
@@ -46,17 +43,29 @@ export default function Home() {
     if (error) {
         return <div>Error: {error}</div>;
     }
-
-    const Top10=()=>{
-        {data.top10Animes.week.map(anime => (
-            <Movie name={anime.name} logo={anime.poster} />
-        ))}
-    }
+    const Week = data.top10Animes.week.map((anime) => (
+        <Top10
+            name={anime.name}
+            poster={anime.poster}
+        />
+    ))
+    const Today = data.top10Animes.today.map((anime) => (
+        <Top10
+            name={anime.name}
+            poster={anime.poster}
+        />
+    ))
+    const Month = data.top10Animes.month.map((anime) => (
+        <Top10
+            name={anime.name}
+            poster={anime.poster}
+        />
+    ))
 
     return (
 
         <div>
-            <div className="overflow-scroll w-screen h-screen">
+            <div className="overflow-scroll scrollbar-hide w-screen h-screen">
                 <Navbar />
                 <div className="w-screen flex">
                     <div className="w-3/4 h-full flex flex-wrap">
@@ -64,25 +73,39 @@ export default function Home() {
                             <Movie name={anime.name} logo={anime.poster} />
                         ))}
                     </div>
-                    <div className="w-1/4 flex justify-center bg-slate-500">
+                    <div className="w-1/4 flex justify-center ">
                         <div>
-                            <p>Top 10</p>
-                            <button onClick={() => handleButtonClick(Top10())}>
-                                Show Content 1
-                            </button>
-                            <button onClick={() => handleButtonClick('Content 2')}>
-                                Show Content 2
-                            </button>
-                            <button onClick={() => handleButtonClick('Content 3')}>
-                                Show Content 3
-                            </button>
+                            <div className="flex justify-between pt-4">
+                                <p>Top 10</p>
+                                <div>
+                                    <button onClick={() => handleButtonClick(Week)} className="px-1">
+                                        Today
+                                    </button>
+                                    <button onClick={() => handleButtonClick(Today)} className="px-1">
+                                        Week
+                                    </button>
+                                    <button onClick={() => handleButtonClick(Month)} className="px-1">
+                                        Month
+                                    </button>
+                                </div>
+                            </div>
                             <div>
+                                {!content && (
+                                    <div>
+                                        <p>{Week}</p>
+                                    </div>
+                                )}
                                 {content && (
                                     <div className='text-white'>
-                                        <h2>Content Display:</h2>
                                         <p>{content}</p>
                                     </div>
                                 )}
+                            </div>
+                            <div>Genres</div>
+                            <div className="flex w-80 flex-wrap justify-between">
+                                {data.genres.map(anime => (
+                                    <Genres name={anime} />
+                                ))}
                             </div>
                         </div>
                     </div>
