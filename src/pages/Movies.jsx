@@ -67,11 +67,16 @@ export default function Home() {
         <div>
             <div className="overflow-scroll scrollbar-hide w-screen h-screen">
                 <Navbar />
-                <div className="w-screen flex">
+                <div className="w-screen flex pt-6">
                     <div className="w-3/4 h-full flex flex-wrap">
+                        <div className="p-4">
+                            Movie Anime
+                        </div>
+                        <div className="w-full h-full flex flex-wrap">
                         {data.animes.map(anime => (
                             <Movie name={anime.name} logo={anime.poster} />
                         ))}
+                        </div>
                     </div>
                     <div className="w-1/4 flex justify-center ">
                         <div>
